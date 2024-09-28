@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function resetContributionsAndLimits() {
         contributions.splice(0,initialLimits.length,...initialLimits); // Reset all contributions to match TFSA limits
-        tfsaLimits.splice(0,initialLimits.length,...initialLimits); // Reset all contributions to match TFSA limits
+        tfsaLimits.splice(0,initialLimits.length,...initialLimits); // Reset all TFSA to match TFSA limits
         updateStartYear()
     }
 
@@ -188,9 +188,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateStartYear() {
         const startYear = parseInt(startYearInput.value);
-        tfsaLimits.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); // Reset all contributions to match TFSA limits
-        tfsaLimits.splice(startYear-initialYears[0],Infinity,...initialLimits.slice(startYear-initialYears[0])); // Reset all contributions to match TFSA limits
-        contributions.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); // Reset all contributions to match TFSA limits
+        tfsaLimits.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); //set TFSA limits of years before start to 0
+        contributions.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); // set contributions of years before start to 0
         populateTable(); // Re-populate the table to reflect the changes
     }
 
