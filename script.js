@@ -1,3 +1,5 @@
+const inflation = 3.0/100;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Separate lists for each column's data
     
@@ -165,9 +167,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const newYear = lastYear + 1;
 
         years.push(newYear);
-        tfsaLimits.push(tfsaLimits[tfsaLimits.length - 1]);  
+        tfsaLimits.push(tfsaLimits[tfsaLimits.length - 1]*(1+inflation));  
         spReturns.push(spReturns.reduce((a,b)=>a+b)/spReturns.length);    
-        contributions.push(tfsaLimits[tfsaLimits.length - 1]); // Default contribution for new rows
+        contributions.push(tfsaLimits[tfsaLimits.length - 1]*(1+inflation)); // Default contribution for new rows
 
         populateTable();
     }
