@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         years.push(newYear);
         tfsaLimits.push(tfsaLimits[tfsaLimits.length - 1]);  
-        spReturns.push(spReturns[spReturns.length - 1]);    
+        spReturns.push(spReturns.reduce((a,b)=>a+b)/spReturns.length);    
         contributions.push(tfsaLimits[tfsaLimits.length - 1]); // Default contribution for new rows
 
         populateTable();
