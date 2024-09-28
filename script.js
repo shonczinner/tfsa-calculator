@@ -165,11 +165,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function addRow() {
         const lastYear = years[years.length - 1];
         const newYear = lastYear + 1;
+        const newLimit = tfsaLimits[tfsaLimits.length - 1]*(1+inflation)
 
         years.push(newYear);
-        tfsaLimits.push(tfsaLimits[tfsaLimits.length - 1]*(1+inflation));  
+        tfsaLimits.push(newLimit);  
         spReturns.push(spReturns.reduce((a,b)=>a+b)/spReturns.length);    
-        contributions.push(tfsaLimits[tfsaLimits.length - 1]*(1+inflation)); // Default contribution for new rows
+        contributions.push(newLimit); // Default contribution for new rows
 
         populateTable();
     }
