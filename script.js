@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <td id="contributionRoom-${year}">$${contributionRoom}</td>
             <td><span class="currencyinput"><input type="number" id="contribution-${year}" value="${contribution}" class="contribution-input"></span></td>
             <td id="cumulativeContribution-${year}">$${cumulativeContribution.toFixed(2)}</td>
-            <td><span class="percentinput"><input type="number" id="spReturn-${year}" value="${spReturn}" class="sp-input"></span></td>
+            <td><input type="number" id="spReturn-${year}" value="${spReturn}" class="sp-input"></td>
             <td id="eoyTotal-${year}">$${eoyTotal.toFixed(2)}</td>
         `;
         
