@@ -57,7 +57,7 @@ input[type="text"], input[type="number"] {
 
 .percentinput:before {
     position: absolute;
-    top: 0;
+    top: 1px;
     content:"%";
     right: 25px;
 }
