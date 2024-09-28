@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFSA Investment Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TFSA Investment Table</h1>
+
+        <!-- Start Year Input -->
+        <label for="startYear">Start Year: </label>
+        <input type="number" id="startYear" value="2009" min="2009" max="2100" />
+        
+        <table id="investmentTable">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Annual Limit</th>
+                    <th>Contribution Room</th>
+                   
+
+                    <th>Contribution(+)<br>Withdrawal(-)</th>
+                    <th>Cumulative Contribution</th>
+                    <th>S&amp;P Return</th>
+                    <th>EOY Total Value</th>
+    
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Initial rows go here -->
+            </tbody>
+        </table>
+
+        <div class="buttons">
+            <button id="addRowBtn">Add row</button>
+            <button id="resetContributionsBtn">Reset TFSA Limits & Contributions</button>
+            <button id="resetReturnsBtn">Reset S&amp;P Returns</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data Sources:</p>
+        <p>
+            <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/contributions.html" target="_blank">
+                Canada Revenue Agency - TFSA Contributions</a>
+        </p>
+        <p>
+            <a href="https://www.slickcharts.com/sp500/returns" target="_blank">
+                Slickcharts - S&P 500 Returns</a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
