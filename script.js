@@ -112,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create table row dynamically with input fields for contributions and S&P return
             rowElement.innerHTML = `
             <td id="year-${year}">${year}</td>
-            <td><span class="currencyinput"><input type="number" id="limit-${year}" value="${limit}" class="limit-input"></span></td>
-            <td id="contributionRoom-${year}">$${contributionRoom}</td>
-            <td><span class="currencyinput"><input type="number" id="contribution-${year}" value="${contribution}" class="contribution-input"></span></td>
+            <td><span class="currencyinput"><input type="number" id="limit-${year}" value="${limit.toFixed(2)}" class="limit-input"></span></td>
+            <td id="contributionRoom-${year}">$${contributionRoom.toFixed(2)}</td>
+            <td><span class="currencyinput"><input type="number" id="contribution-${year}" value="${contribution.toFixed(2)}" class="contribution-input"></span></td>
             <td id="cumulativeContribution-${year}">$${cumulativeContribution.toFixed(2)}</td>
             <td><input type="number" id="spReturn-${year}" value="${spReturn.toFixed(2)}" class="sp-input"></td>
             <td id="eoyTotal-${year}">$${eoyTotal.toFixed(2)}</td>
