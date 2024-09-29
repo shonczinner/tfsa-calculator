@@ -130,19 +130,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }); 
 
         if(recreate){
-            // Add event listeners to contribution inputs
-            const inputs = document.querySelectorAll('.contribution-input, .sp-input, .limit-input');
+              // Add event listeners to contribution inputs
+        const contributionInputs = document.querySelectorAll('.contribution-input');
+        contributionInputs.forEach((input, index) => {
+            input.addEventListener('input', (event) => {
+                contributions[index] = parseFloat(event.target.value) || 0; // Update contributions
+                updateTable(false,event.target.id); // Re-populate the table to reflect the changes
+            });
+            input.addEventListener('blur', (event) => {
+                contributions[index] = parseFloat(event.target.value) || 0; // Update contributions
+                updateTable(false); // Re-populate the table to reflect the changes
+            });
+        });
 
-            inputs.forEach((input, index) => {
-                input.addEventListener('input', (event) => {
-                    contributions[index] = parseFloat(event.target.value) || 0; // Update contributions
-                    updateTable(false,event.target.id); // Re-populate the table to reflect the changes
-                });
-                input.addEventListener('blur', (event) => {
-                    contributions[index] = parseFloat(event.target.value) || 0; // Update contributions
-                   updateTable(false); // Re-populate the table to reflect the changes
-                });
-            });           
+         // Add event listeners to contribution inputs
+         const spInputs = document.querySelectorAll('.sp-input');
+         spInputs.forEach((input, index) => {
+             input.addEventListener('input', (event) => {
+                 spReturns[index] = parseFloat(event.target.value) || 0; // Update contributions
+                 updateTable(false,event.target.id); // Re-populate the table to reflect the changes
+             });
+             input.addEventListener('blur', (event) => {
+                spReturns[index] = parseFloat(event.target.value) || 0; // Update contributions
+                updateTable(false); // Re-populate the table to reflect the changes
+            });
+         });
+
+         
+         // Add event listeners to contribution inputs
+         const limitInputs = document.querySelectorAll('.limit-input');
+         limitInputs.forEach((input, index) => {
+             input.addEventListener('input', (event) => {
+                 tfsaLimits[index] = parseFloat(event.target.value) || 0; // Update contributions
+                 updateTable(false,event.target.id); // Re-populate the table to reflect the changes
+             });
+             input.addEventListener('blur', (event) => {
+                tfsaLimits[index] = parseFloat(event.target.value) || 0; // Update contributions
+                updateTable(false); // Re-populate the table to reflect the changes
+            });
+         });    
         }
 
     }
@@ -236,8 +262,8 @@ document.addEventListener('DOMContentLoaded', function() {
     addRowBtn.addEventListener('click', addRow);
     deleteRowBtn.addEventListener('click', deleteRow);
 
-    resetLimitsBtn.addEventListener('click',resetLimits)
-    contributionsLimitBtn.addEventListener('click', resetContributionsToLimits);
+    resetLimitsBtn.addEventListener('click',()=>resetLimits())
+    contributionsLimitBtn.addEventListener('click', ()=>resetContributionsToLimits());
     contributionsZeroBtn.addEventListener('click', resetContributionsToZero);
 
     resetReturnsBtn.addEventListener('click', resetSpReturns);
