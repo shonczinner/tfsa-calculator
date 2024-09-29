@@ -203,8 +203,8 @@ document.addEventListener('DOMContentLoaded', function() {
         tfsaLimits.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); //set TFSA limits of years before start to 0
         contributions.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); // set contributions of years before start to 0
         
-        tfsaLimits.splice(startYear-initialYears[0],initialLimits.length,...initialLimits.slice(startYear-initialYears[0])); //set TFSA limits of years after start to default limit
-        contributions.splice(startYear-initialYears[0],initialLimits.length,...initialLimits.slice(startYear-initialYears[0])); // set contributions of years after start to default limi
+        tfsaLimits.splice(startYear-initialYears[0],initialLimits.length-startYear-initialYears[0],...initialLimits.slice(startYear-initialYears[0])); //set TFSA limits of years after start to default limit
+        contributions.splice(startYear-initialYears[0],initialLimits.length-startYear-initialYears[0],...initialLimits.slice(startYear-initialYears[0])); // set contributions of years after start to default limi
         populateTable(); // Re-populate the table to reflect the changes
     }
 
