@@ -49,19 +49,19 @@ document.addEventListener('DOMContentLoaded', function() {
             // Example: Set all "limit" input fields to a specific value
             const limitInput = document.getElementById(`limit-${year}`);
             if (limitInput) {
-                limitInput.value = limit;  // Set limit value to 5000
+                limitInput.value = limit.toFixed(2);  // Set limit value to 5000
             }
 
             // Example: Set "contribution" input fields to a specific value
             const contributionInput = document.getElementById(`contribution-${year}`);
             if (contributionInput) {
-                contributionInput.value = contribution;  // Set contribution value to 5000
+                contributionInput.value = contribution.toFixed(2);  // Set contribution value to 5000
             }
 
             // Example: Set "spReturn" input fields to a specific value
             const spReturnInput = document.getElementById(`spReturn-${year}`);
             if (spReturnInput) {
-                spReturnInput.value = spReturn;  // Set S&P return value to 5
+                spReturnInput.value = spReturn.toFixed(2);  // Set S&P return value to 5
             }
 
             // Set text content for non-input fields
