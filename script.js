@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         years.push(newYear);
         tfsaLimits.push(newLimit);  
-        spReturns.push(spReturns.reduce((a,b)=>a+b)/spReturns.length);    
+        spReturns.push(initialSpReturns.reduce((a,b)=>a+b)/initialSpReturns.length);    
         contributions.push(newLimit); // Default contribution for new rows
 
         populateTable();
