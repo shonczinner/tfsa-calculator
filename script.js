@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const assumedLimits = Array.from({length:contributions.length-initialLimits.length},(_,index)=>Math.round(initialLimits[initialLimits.length-1]*(1+inflation)**(index+1)/500)*500);
         tfsaLimits.splice(0,initialLimits.length,...initialLimits); // Reset all TFSA to match TFSA limits
         tfsaLimits.splice(initialLimits.length,tfsaLimits.length-initialLimits.length,...assumedLimits); // Reset all TFSA to match assumed TFSA limits
-        populateTable(); // Re-populate the table to reflect the changes
+        updateStartYear(); // Re-populate the table to reflect the changes
     }
 
     function resetContributionsToLimits() {
