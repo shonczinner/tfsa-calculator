@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let cumulativeContribution = 0;
     let contributionRoom = 0;
 
-    function changeTable(){
+    function changeTable(id = null){
 
         cumulativeContribution = 0; // Reset cumulativeContribution before recalculation
         contributionRoom = 0 
@@ -46,19 +46,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Example: Set all "limit" input fields to a specific value
             const limitInput = document.getElementById(`limit-${year}`);
-            if (limitInput) {
+            if (limitInput&&id!=`limit-${year}`) {
                 limitInput.value = limit.toFixed(2);  // Set limit value to 5000
             }
 
             // Example: Set "contribution" input fields to a specific value
             const contributionInput = document.getElementById(`contribution-${year}`);
-            if (contributionInput) {
+            if (contributionInput&&id!=`contribution-${year}`) {
                 contributionInput.value = contribution.toFixed(2);  // Set contribution value to 5000
             }
 
             // Example: Set "spReturn" input fields to a specific value
             const spReturnInput = document.getElementById(`spReturn-${year}`);
-            if (spReturnInput) {
+            if (spReturnInput&&id!=`spReturn-${year}`) {
                 spReturnInput.value = spReturn.toFixed(2);  // Set S&P return value to 5
             }
 
@@ -138,6 +138,10 @@ document.addEventListener('DOMContentLoaded', function() {
         contributionInputs.forEach((input, index) => {
             input.addEventListener('input', (event) => {
                 contributions[index] = parseFloat(event.target.value) || 0; // Update contributions
+                changeTable(event.target.id); // Re-populate the table to reflect the changes
+            });
+            input.addEventListener('blur', (event) => {
+                contributions[index] = parseFloat(event.target.value) || 0; // Update contributions
                 changeTable(); // Re-populate the table to reflect the changes
             });
         });
@@ -147,8 +151,12 @@ document.addEventListener('DOMContentLoaded', function() {
          spInputs.forEach((input, index) => {
              input.addEventListener('input', (event) => {
                  spReturns[index] = parseFloat(event.target.value) || 0; // Update contributions
-                 changeTable(); // Re-populate the table to reflect the changes
+                 changeTable(event.target.id); // Re-populate the table to reflect the changes
              });
+             input.addEventListener('blur', (event) => {
+                spReturns[index] = parseFloat(event.target.value) || 0; // Update contributions
+                changeTable(); // Re-populate the table to reflect the changes
+            });
          });
 
          
@@ -157,8 +165,12 @@ document.addEventListener('DOMContentLoaded', function() {
          limitInputs.forEach((input, index) => {
              input.addEventListener('input', (event) => {
                  tfsaLimits[index] = parseFloat(event.target.value) || 0; // Update contributions
-                 changeTable(); // Re-populate the table to reflect the changes
+                 changeTable(event.target.id); // Re-populate the table to reflect the changes
              });
+             input.addEventListener('blur', (event) => {
+                tfsaLimits[index] = parseFloat(event.target.value) || 0; // Update contributions
+                changeTable(event.target.id); // Re-populate the table to reflect the changes
+            });
          });
     }
 
