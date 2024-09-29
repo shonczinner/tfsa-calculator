@@ -183,7 +183,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if(newYear>initialYears[initialYears.length-1]){
             newReturn = averageReturn;
-            newLimit = tfsaLimits[tfsaLimits.length - 1]*(1+inflation);
+            const exponent = newYear-initialYears[initialYears.length-1]
+            newLimit = initialLimits[initialYears.length-1]*((1+inflation)**exponent);
+            newLimit = Math.round(newLimit/500)*500
         }
        
 
@@ -208,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tfsaLimits.splice(0,initialLimits.length,...initialLimits); // Reset all TFSA to match TFSA limits
 
 
-        const assumedLimits = Array.from({length:contributions.length-initialLimits.length},(_,index)=>initialLimits[initialLimits.length-1]*(1+inflation)**(index+1));
+        const assumedLimits = Array.from({length:contributions.length-initialLimits.length},(_,index)=>Math.round(initialLimits[initialLimits.length-1]*(1+inflation)**(index+1)/500)*500);
         contributions.splice(initialLimits.length,contributions.length-initialLimits.length,...assumedLimits); // Reset all contributions to match assumed TFSA limits
         tfsaLimits.splice(initialLimits.length,tfsaLimits.length-initialLimits.length,...assumedLimits); // Reset all TFSA to match assumed TFSA limits
         updateStartYear()
