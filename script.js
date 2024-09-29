@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const tableBody = document.querySelector('#investmentTable tbody');
     const addRowBtn = document.getElementById('addRowBtn');
+    const deleteRowBtn = document.getElementById('deleteRowBtn');
     const resetContributionsBtn = document.getElementById('resetContributionsBtn');
     const resetReturnsBtn = document.getElementById('resetReturnsBtn');
     const startYearInput = document.getElementById('startYear');
@@ -177,24 +178,46 @@ document.addEventListener('DOMContentLoaded', function() {
     function addRow() {
         const lastYear = years[years.length - 1];
         const newYear = lastYear + 1;
-        const newLimit = tfsaLimits[tfsaLimits.length - 1]*(1+inflation)
+        let newReturn = initialSpReturns[newYear-initialYears[0]];
+        let newLimit = initialLimits[newYear-initialYears[0]];
+
+        if(newYear>initialYears[initialYears.length-1]){
+            newReturn = averageReturn;
+            newLimit = tfsaLimits[tfsaLimits.length - 1]*(1+inflation);
+        }
+       
 
         years.push(newYear);
         tfsaLimits.push(newLimit);  
-        spReturns.push(averageReturn);    
+        spReturns.push(newReturn);    
         contributions.push(newLimit); // Default contribution for new rows
 
+        populateTable();
+    }
+
+    function deleteRow() {
+        years.pop();
+        tfsaLimits.pop();  
+        spReturns.pop();    
+        contributions.pop(); // Default contribution for new rows
         populateTable();
     }
 
     function resetContributionsAndLimits() {
         contributions.splice(0,initialLimits.length,...initialLimits); // Reset all contributions to match TFSA limits
         tfsaLimits.splice(0,initialLimits.length,...initialLimits); // Reset all TFSA to match TFSA limits
+
+
+        const assumedLimits = Array.from({length:contributions.length-initialLimits.length},(_,index)=>initialLimits[initialLimits.length-1]*(1+inflation)**(index+1));
+        contributions.splice(initialLimits.length,contributions.length-initialLimits.length,...assumedLimits); // Reset all contributions to match assumed TFSA limits
+        tfsaLimits.splice(initialLimits.length,tfsaLimits.length-initialLimits.length,...assumedLimits); // Reset all TFSA to match assumed TFSA limits
         updateStartYear()
     }
 
     function resetSpReturns() {
         spReturns.splice(0,initialSpReturns.length,...initialSpReturns); // Reset all S&P returns to their initial values
+        // Reset S&P returns to assumed values
+        spReturns.splice(initialSpReturns.length,spReturns.length-initialSpReturns.length,...Array(spReturns.length-initialSpReturns.length).fill(averageReturn));
         populateTable(); // Re-populate the table to reflect the changes
     }
 
@@ -210,6 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listeners for buttons and input changes
     addRowBtn.addEventListener('click', addRow);
+    deleteRowBtn.addEventListener('click', deleteRow);
     resetContributionsBtn.addEventListener('click', resetContributionsAndLimits);
     resetReturnsBtn.addEventListener('click', resetSpReturns);
     startYearInput.addEventListener('input', updateStartYear);
