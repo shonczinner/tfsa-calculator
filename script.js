@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             contributionRoom += limit 
             
-            contributionRoom -= contribution
-            
             // Example: Set all "limit" input fields to a specific value
             const limitInput = document.getElementById(`limit-${year}`);
             if (limitInput) {
@@ -79,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (eoyTotalCell) {
                 eoyTotalCell.textContent = '$'+eoyTotal.toFixed(2);  // Set EOY total value to $5000
             }
+
+            contributionRoom -= contribution
         }); 
 
     }
