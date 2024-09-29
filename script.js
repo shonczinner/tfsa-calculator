@@ -1,15 +1,15 @@
-const inflation = 3.0/100;
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Separate lists for each column's data
-    
-    
+    const inflation = 3.0/100;
     
     // Initial S&P returns to reset to
     const initialYears = [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
     const initialLimits = [5000, 5000, 5000, 5000, 5500, 5500, 10000, 5500, 5500, 5500, 6000, 6000, 6000, 6000, 6500, 7000];
     const initialSpReturns = [26.46, 15.06, 2.11, 16.00, 32.39, 13.69, 1.38, 11.96, 21.83, -4.38, 31.49, 18.40, 28.71, -18.11, 26.29, 21.55];
     
+    const averageReturn = initialSpReturns.reduce((a,b)=>a+b)/initialSpReturns.length
+
     // Copy of initial returns used for calculation
     let years = [...initialYears]
     let tfsaLimits = [...initialLimits]
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         years.push(newYear);
         tfsaLimits.push(newLimit);  
-        spReturns.push(initialSpReturns.reduce((a,b)=>a+b)/initialSpReturns.length);    
+        spReturns.push(averageReturn);    
         contributions.push(newLimit); // Default contribution for new rows
 
         populateTable();
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contributions.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); // set contributions of years before start to 0
         
         tfsaLimits.splice(startYear-initialYears[0],initialLimits.length,...initialLimits.slice(startYear-initialYears[0])); //set TFSA limits of years after start to default limit
-        contributions.splice(startYear-initialYears[0],initialLimits.length,...initialLimits.slice(startYear-initialYears[0])); // set contributions of years after start to default limit
+        contributions.splice(startYear-initialYears[0],initialLimits.length,...initialLimits.slice(startYear-initialYears[0])); // set contributions of years after start to default limi
         populateTable(); // Re-populate the table to reflect the changes
     }
 
