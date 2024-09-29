@@ -202,6 +202,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const startYear = parseInt(startYearInput.value);
         tfsaLimits.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); //set TFSA limits of years before start to 0
         contributions.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); // set contributions of years before start to 0
+        
+        tfsaLimits.splice(startYear-initialYears[0],Infinity,...initialLimits.slice(startYear-initialYears[0])); //set TFSA limits of years after start to default limit
+        contributions.splice(startYear-initialYears[0],Infinity,...initialLimits.slice(startYear-initialYears[0])); // set contributions of years after start to default limit
         populateTable(); // Re-populate the table to reflect the changes
     }
 
