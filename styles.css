@@ -2,6 +2,17 @@
     box-sizing: border-box;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0); /* Clip the element */
+    border: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
@@ -35,6 +46,8 @@ body {
     }
     
 }
+
+
 
 @media (max-width: 900px) {
 
