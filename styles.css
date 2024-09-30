@@ -96,3 +96,17 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.social-sharing a {
+    display: inline-block;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.social-sharing a:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TFSA Investment Calculation</title>
+    <meta name="description" content="Use this dynamic tool to approximate TFSA value if invested in the S&P 500 over time.">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FinancialProduct",
+          "name": "TFSA Investment Growth Calculator",
+          "description": "A tool to approximate TFSA value if invested in the S&P 500 over time.",
+          "audience": "Canadians interested in TFSA investments"
+        }
+    </script> 
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TFSA Investment Calculator">
+    <meta property="og:description" content="Use this calculator to approximate TFSA value in the S&P 500.">
+    <meta property="og:image" content="https://shonczinner.github.io/images/investment-calculator.webp">
+    <meta property="og:url" content="https://shonczinner.github.io/tfsa-calculator">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TFSA Investment Calculator">
+    <meta name="twitter:description" content="Estimate your TFSA investments in the S&P 500 with this calculator.">
+    <meta name="twitter:image" content="https://shonczinner.github.io/images/investment-calculator.webp">
+    <meta name="twitter:url" content="https://shonczinner.github.io/tfsa-calculator">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
 </head>
 <body>
+    <nav>
+        <a href="https://shonczinner.github.io">shonczinner.github.io</a>
+     </nav>
+     
     <div class="container">
         <h1>TFSA Investment Table</h1>
 
@@ -57,6 +90,26 @@
     </div>
 
     <footer>
+
+        <h2>Share this tool:</h2>
+        <div class="social-sharing">
+            <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20TFSA%20Investment%20Calculator!&url=https://shonczinner.github.io/tfsa-calculator" target="_blank">
+                Share on Twitter
+            </a>
+            <br>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://shonczinner.github.io/tfsa-calculator" target="_blank">
+                Share on Facebook
+            </a>
+            <br>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://shonczinner.github.io/tfsa-calculator&title=TFSA%20Investment%20Calculator&summary=Use%20this%20calculator%20to%20approximate%20TFSA%20value%20in%20the%20S%26P%20500." target="_blank">
+                Share on LinkedIn
+            </a>
+            <br>
+            <a href="https://www.reddit.com/submit?url=https://shonczinner.github.io/tfsa-calculator&title=TFSA%20Investment%20Calculator" target="_blank">
+                Share on Reddit
+            </a>
+        </div>
+
         <p>Data Sources:</p>
         <p>
             <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/contributions.html" target="_blank">
@@ -66,7 +119,8 @@
             <a href="https://www.slickcharts.com/sp500/returns" target="_blank">
                 Slickcharts - S&P 500 Returns</a>
         </p>
-       
+
+  
     </footer>
 
     <script src="script.js"></script>
