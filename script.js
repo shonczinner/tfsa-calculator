@@ -189,8 +189,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function addRow() {
-        const lastYear = years[years.length - 1];
+        let lastYear = currentStartYear-1;
+
+        if(years.length>0){
+            lastYear = years[years.length - 1];
+        }
+        
         const newYear = lastYear + 1;
+
+        if(newYear<initialYears[0]){
+            return
+        }
+
         let newReturn = initialSpReturns[newYear-initialYears[0]];
         let newLimit = initialLimits[newYear-initialYears[0]];
 
@@ -210,11 +220,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function deleteRow() {
-        years.pop();
-        tfsaLimits.pop();  
-        spReturns.pop();    
-        contributions.pop(); // Default contribution for new rows
-        updateTable();
+        if(years[years.length-1]>currentStartYear && years.length>1){
+            years.pop();
+            tfsaLimits.pop();  
+            spReturns.pop();    
+            contributions.pop(); // Default contribution for new rows
+            updateTable();
+        }
     }
 
 
@@ -261,7 +273,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateStartYear() {
+        startYearInput.value = Math.min(parseInt(startYearInput.value),years[years.length-1])
         const startYear = parseInt(startYearInput.value);
+
+        if(startYear == currentStartYear){
+            return
+        }
+
         if(startYear-initialYears[0]>=0){
             tfsaLimits.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); //set TFSA limits of years before start to 0
             contributions.splice(0,startYear-initialYears[0],...Array(startYear-initialYears[0]).fill(0)); // set contributions of years before start to 0
